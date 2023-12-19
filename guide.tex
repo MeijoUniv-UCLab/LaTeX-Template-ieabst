@@ -3,7 +3,7 @@
 % アブストラクトサンプル
 % Last Update: 2021/11/13
 
-\documentclass[a4paper,uplatex]{ujarticle}
+\documentclass[a4paper,9pt,uplatex]{ujarticle}
 \usepackage{ieabst}
 \usepackage{newenum}
 \usepackage[dvipdfmx]{graphicx}
@@ -104,7 +104,7 @@ Microsoft Word用のテンプレートと，\LaTeX 用のスタイルファイ�
 以下のように指定してください．
 
 \begin{verbatim}
-\documentclass[a4paper,9pt]{jarticle}
+\documentclass[a4paper,9pt,uplatex]{ujarticle}
 \usepackage{ieabst}
 \usepackage{newenum}
 \usepackage[dvipdfmx]{graphicx}
@@ -153,14 +153,14 @@ PDFファイルの作成時は，フォントをすべて埋め込んでくだ�
 
 \begin{figure}[ht]
 \centering
-\includegraphics[width=0.9\columnwidth,clip]{2-1.eps}
+\includegraphics[width=0.9\columnwidth,clip]{fig/2-1.eps}
 \caption{EPS図のサンプル}
 \label{fig:sample1}
 \end{figure}
 
 \begin{figure}[ht]
 \centering
-\includegraphics[scale=0.6,clip]{2-2.pdf}
+\includegraphics[scale=0.6,clip]{fig/2-2.pdf}
 \caption{PDF図のサンプル}
 \label{fig:sample2}
 \end{figure}
