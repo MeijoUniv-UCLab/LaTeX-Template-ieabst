@@ -1,9 +1,9 @@
 % 名城大学情報工学部情報工学科卒業研究発表会
 % ・名城大学理工学研究科情報工学専攻公聴会
 % アブストラクトサンプル
-% Last Update: 2025/11/25
+% Last Update: 2025/11/25 -> 12/10 鈴木研Overleaf用に更新
 
-\documentclass[a4paper]{jarticle}
+\documentclass[a4paper,9pt,uplatex]{ujarticle}
 \usepackage{ieabst}
 \usepackage{newenum}
 \usepackage[dvipdfmx]{graphicx}
@@ -11,7 +11,7 @@
 %タイトルが長い場合は，勝手に改行されます．
 %% 「\\」の挿入で任意の位置に改行を入れられます．
 \題目{アブストラクト作成の手引き}
-\学籍番号{2XXXXXXXX}
+\学籍番号{2XX4XXXXX}
 \氏名{名城 太郎}
 \研究室{＊＊}
 % 研究室の ＊＊ の部分は以下から選択します．（50音順）
@@ -103,7 +103,7 @@ Microsoft Word 用のテンプレートと，\LaTeX 用のスタイルファイ�
 以下のように指定してください．
 
 \begin{verbatim}
-\documentclass[a4paper,9pt]{jarticle}
+\documentclass[a4paper,9pt,uplatex]{ujarticle}
 \usepackage{ieabst}
 \usepackage{newenum}
 \usepackage[dvipdfmx]{graphicx}
@@ -152,14 +152,14 @@ PDFファイルの作成時は，フォントをすべて埋め込んでくだ�
 
 \begin{figure}[ht]
 \centering
-\includegraphics[width=0.9\columnwidth,clip]{2-1.eps}
+\includegraphics[width=0.9\columnwidth,clip]{fig/2-1.eps}
 \caption{EPS図のサンプル}
 \label{fig:sample1}
 \end{figure}
 
 \begin{figure}[ht]
 \centering
-\includegraphics[scale=0.6,clip]{2-2.pdf}
+\includegraphics[scale=0.6,clip]{fig/2-2.pdf}
 \caption{PDF図のサンプル}
 \label{fig:sample2}
 \end{figure}
