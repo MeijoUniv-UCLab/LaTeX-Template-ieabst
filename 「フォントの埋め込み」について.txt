@@ -1,12 +1,13 @@
-﻿# 「フォントの埋め込み」について by 旭 2020/10/13
+﻿# 「フォントの埋め込み」について by 旭 2025/11/25
 
 
 ## この文章の目的
 
 日本語で TeX から PDF を作成する際につまづきやすい
 日本語フォントの埋め込みについて，説明した文章です．
-TeXLive 2020 を Windows 10 で使用することを想定しています．
-他の TeX ディストリビューションやOS環境については，自分で調査してください．
+TeX Live 2025 を Windows 11 で使用することを想定しています．
+（この文章は TeX Live 2020 の時に書いたものですが，状況に変化は無いようです）
+他の TeX ディストリビューションや OS 環境については，各自で調査してください．
 
 
 ## まず何をすればよいですか？
@@ -21,17 +22,20 @@ http://ctan.math.washington.edu/tex-archive/fonts/ptex-fontmaps/kanji-config-upd
 
 ## もう少し具体的に教えて
 
+### デフォルトで埋め込まれるフォントの確認方法
+
 多分，以下の手順を踏むと思われます．
 なお，以下を実行して，PCの環境が壊れても当方は関知しないため，
-*自己責任*でお願いします．
-ちなみに TeXLive 2020 では，デフォルトで
-「原ノ味フォント」が埋め込まれるみたいなので，特別な設定は不要です．
-（どのフォントが埋め込まれるか，念のため確認は必要と思います．）
+*自己責任* でお願いします．
+ちなみに TeXLive 2025 において，デフォルトでは
+「原ノ味フォント」が埋め込まれるようです．
+このため，この挙動で問題が無ければ特別な設定は不要です．
+（どのフォントが埋め込まれるか，念のため事前の確認は必要と思います．）
 
 * Windows ユーザーの場合
-  - [スタート] → [TeX Live 2020] → [TeX Live command-line]
+  - [スタート] → [TeX Live 2025] → [TeX Live command-line]
     とたどり，TeX Live のコマンドプロンプトを開きます．
-  - kanji-config-updmap-sys status を実行します．
+  - kanji-config-updmap-sys status を実行します（結果表示まで数分程度かかります）．
     CURRENT family for ja: のところに出てきたフォントが埋め込まれます．
     また，Standby family : のところに出てきたフォントは，変更可能な一覧です．
     * kanji-config-updmap-sys を実行するとき，カレントディレクトリのパスに
@@ -50,15 +54,41 @@ http://ctan.math.washington.edu/tex-archive/fonts/ptex-fontmaps/kanji-config-upd
 * Mac や Linux ユーザーの場合
   - 私にはよくわかりませんので，各自で調査してください．以下は推測で書いています．
   - とりあえず，ターミナル（端末）を開きます．
-  - $ sudo kanji-config-updmap-sys status を実行して，
+  - sudo kanji-config-updmap-sys status を実行して，
     CURRENT family for ja: のところに出てきたフォントが埋め込まれます．
     また，Standby family : のところに出てきたフォントは，変更可能な一覧です．
-  - 変更するには，$ sudo kanji-config-updmap-sys <fontname> とします．
+  - 変更するには， sudo kanji-config-updmap-sys <fontname> とします．
     ここで， <fontname> は，前項の Standby family から指定します．
-    例： $ sudo kanji-config-updmap-sys ms
+    例：  sudo kanji-config-updmap-sys ms
   - ちなみに ms を埋め込むと Word 文章と似た見た目になると思います．
   - 公式文書によると yu-win10 を埋め込むと，一部記号がおかしくなるみたいです．
     したがって，新しい Word の游フォントに見た目を近づけるのはお勧めしません．
   - 公式文書によると ipaex を埋め込むと，細字の明朝や太字のゴシックが利用できないようです．
     他のフォントでもプリセットされているフォントのウェイト（文字の太さ）に注意が必要みたいです．
 
+
+#### TeX のコンパイル方法
+
+ここでは， pLaTeX を前提に説明します． LuaTeX など他のツールは各自で調査してください．
+なお，TeX ファイルや関連して使用するファイル（画像など）のフルパスに，
+日本語文字が含まれると TeX のコンパイルに失敗する場合があります．
+
+最初に，コンパイルは，以下のコマンドを2回実行します．
+platex <texファイルのファイル名（拡張子除く）>
+
+次に，dviファイルをpdfファイルに変換するために，以下のコマンドを実行します．
+dvipdfmx <texファイルのファイル名（拡張子除く）>
+
+最後に，PDFファイルが正しく作成できているか，ファイルを開いて確認します．
+start <pdfファイルのファイル名>
+（LinuxやMacでは，start コマンドの代わりに open を使用すると思われます）
+
+
+#### TeX のコンパイル方法（おまけ）
+
+実はこっそり .latexmkrc ファイルを同梱しているため，
+以下のコマンド一発でtexファイルからpdfファイルを生成できます．
+latexmk
+
+
+以上です．
